@@ -85,7 +85,7 @@ balance_dendrogram = function(X, B, group = NULL){
       }
     }
     ## l, r, i_bal, x, y
-    h_scaled = x[1] + (x[2] - x[1]) * (h[[i]] - XLIMS[1]) / (XLIMS[2] - XLIMS[1])
+    h_scaled = x[1] + (x[2] - x[1]) * (h[[i_bal]] - XLIMS[1]) / (XLIMS[2] - XLIMS[1])
     nodes[[i]] = list(l = l,
                       r = r,
                       x = x, y = y,
@@ -102,7 +102,7 @@ balance_dendrogram = function(X, B, group = NULL){
 
     if(GROUPED){
       nodes_group[[i]] = lapply(group_labels, function(g){
-        h_scaled = x[1] + (x[2] - x[1]) * (h_group[[g]][[i]] - XLIMS[1]) / (XLIMS[2] - XLIMS[1])
+        h_scaled = x[1] + (x[2] - x[1]) * (h_group[[g]][[i_bal]] - XLIMS[1]) / (XLIMS[2] - XLIMS[1])
         list(l = l,
              r = r,
              x = x, y = y,
@@ -225,11 +225,11 @@ balance_dendrogram = function(X, B, group = NULL){
       geom_rect(data=dbox, aes(xmin = xlower5, xmax = xmiddle,
                                ymin = ymin_minor,
                                ymax = ymax_minor,
-                               fill = group), col= 'black') +
+                               fill = group), col= 'black', alpha=0.45) +
       geom_rect(data=dbox, aes(xmin = xmiddle, xmax = xupper5,
                                ymin = ymin_minor,
                                ymax = ymax_minor,
-                               fill = group), col= 'black') +
+                               fill = group), col= 'black', alpha=0.45) +
       geom_rect(data=dbox, aes(xmin = xlower, xmax = xmiddle,
                                ymin = ymin_major,
                                ymax = ymax_major,
@@ -253,20 +253,22 @@ balance_dendrogram = function(X, B, group = NULL){
     p = p +
       geom_rect(data=dbox, aes(xmin = xlower5, xmax = xmiddle,
                                ymin = ymin_minor,
-                               ymax = ymax_minor),
-                fill = 'white', col= 'black') +
+                               ymax = ymax_minor,
+                               fill = 'global'), col= 'black') +
       geom_rect(data=dbox, aes(xmin = xmiddle, xmax = xupper5,
                                ymin = ymin_minor,
-                               ymax = ymax_minor),
-                fill = 'white', col= 'black') +
+                               ymax = ymax_minor,
+                               fill = 'global'), col= 'black') +
       geom_rect(data=dbox, aes(xmin = xlower, xmax = xmiddle,
                                ymin = ymin_major,
-                               ymax = ymax_major),
-                fill = 'white', col= 'black') +
+                               ymax = ymax_major,
+                               fill = 'global'), col= 'black') +
       geom_rect(data=dbox, aes(xmin = xmiddle, xmax = xupper,
                                ymin = ymin_major,
-                               ymax = ymax_major),
-                fill = 'white', col= 'black')
+                               ymax = ymax_major,
+                               fill = 'global'), col= 'black') +
+      guides(fill = 'none') +
+      scale_fill_manual(values = c('grey'))
   }
 
   # p1
@@ -275,7 +277,7 @@ balance_dendrogram = function(X, B, group = NULL){
   #                    xmiddle = xmiddle, xupper = xupper, xmax = xmax,
   #                    y = y, weight = 2*y, group = factor(balance)), varwidth = T)
 
-  p +
+  p_dendrogram = p +
     scale_x_continuous(breaks = 1:ncol(X), labels = hc$labels[hc$order]) +
     scale_y_continuous(limits = c(NA, TOTAL_VAR),
                        breaks = seq(0,1,0.1) * TOTAL_VAR,
@@ -286,6 +288,8 @@ balance_dendrogram = function(X, B, group = NULL){
           panel.grid.major.x = element_blank(),
           axis.text.x = element_text(colour = )) +
     labs(x = NULL, y = 'Variance explained (%)', fill = '')
+
+  p_dendrogram
 }
 
 

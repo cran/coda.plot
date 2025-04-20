@@ -1,8 +1,9 @@
-f4c9f1ba63c52a7315c2c0b0ab95a02c *DESCRIPTION
-e182403fc4e470eb68b6204ec2801d3b *NAMESPACE
-c403bbd2c5dddcef5b711ed14ed732b6 *R/balance_dendrogram.R
+d4d92a618b463a8cff3b4c73fee31739 *DESCRIPTION
+6ee70cf9c45a828449219db023414e4d *NAMESPACE
+7f1085b54513ad73f2e2dff3c892f32a *NEWS
+3a2e160073e3312cb243c7f539c9d147 *R/balance_dendrogram.R
 63762122510a86fec5eea85e2de2f71e *R/clr_ciplot.R
-02878cff831b15d4e1a6951f8d948319 *R/coda.plot.R
+e219503d5bb375d692e657f021f4094f *R/coda.plot.R
 888d0c2f97f21f9d532cc6d0f290833c *R/geometric_mean_barplot.R
 532576e5f4a2299cab70a43c0ddd4662 *R/ternary_diagram.R
 990d9e87210ef90123d33109de4bba98 *R/zzz.R

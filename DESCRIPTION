@@ -1,8 +1,8 @@
 Package: coda.plot
 Type: Package
 Title: Plots for Compositional Data
-Version: 0.1.8
-Date: 2025-04-03
+Version: 0.1.9
+Date: 2025-04-20
 Authors@R: c(person("Marc", "Comas-Cufí", role = c("aut", "cre"), 
                     email = "mcomas@imae.udg.edu", comment = c(ORCID = "0000-0001-9759-0622")))
 Description: Provides a collection of easy-to-use functions for creating 
@@ -14,8 +14,8 @@ Encoding: UTF-8
 Imports: ggplot2 (>= 3.5.0), ggtern (>= 3.5.0)
 RoxygenNote: 7.3.2
 NeedsCompilation: no
-Packaged: 2025-04-07 05:08:50 UTC; marc
+Packaged: 2025-04-20 21:20:17 UTC; marc
 Author: Marc Comas-Cufí [aut, cre] (<https://orcid.org/0000-0001-9759-0622>)
 Maintainer: Marc Comas-Cufí <mcomas@imae.udg.edu>
 Repository: CRAN
-Date/Publication: 2025-04-08 09:10:02 UTC
+Date/Publication: 2025-04-20 21:30:02 UTC
